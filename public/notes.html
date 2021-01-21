@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ToDo</title>
+	<link rel="stylesheet" href="notesStyles.css"> 
+	<link rel="stylesheet" href="fontisto/css/fontisto/fontisto.min.css">
+	<meta charset="utf-8" />
+
+	<script type="text/javascript">
+		function leftmenu() {
+			let menu = document.querySelector('.leftmenu');
+			if (menu.classList.contains('openLeftMenu')) {
+				menu.style.width = "5vw";
+			} else {
+				menu.style.width = "15vw";
+			}
+			menu.classList.toggle('openLeftMenu');
+			let btn = document.querySelector('header div i');
+			btn.classList.toggle('fi-nav-icon-a');
+			btn.classList.toggle('fi-close-a');
+		}
+	</script>
+</head>
+<body>
+	<header>
+		<div> <! Иконка Notes5d >
+			<i class="fi fi-swarm" title="Главная страница"></i>
+		</div>
+		
+		<div> <! обновить >
+			<i class="fi fi-cloud-refresh" title="Обновить"></i>
+		</div>
+
+		<div> <! настройки >
+			<i class="fi fi-player-settings" title="Настройки"></i>
+		</div>
+		
+		<div> <! аккаунт >
+			<i class="fi fi-user-secret" title="Мой аккаунт"></i>
+		</div>
+
+	</header>
+	<main class="notes">
+			<div class="note templateNote">
+				<div class = "title"> 
+					Заголовок: <br> 
+					<input type="text"> </div>
+				<div class = "content"> 
+					Текст заметки: <br>
+				 	<textarea class = "area"> </textarea>
+				 </div>
+			 	<button class = "create"> Создать </button>
+			</div>
+
+
+			<div class="note"> 
+				<div class = "title">Привет! Я заметка</div>
+				<div class = "content">Привет! Я текст заметки!<br></div>
+				<button class = "destroy"> Удалить </button>
+			</div>
+
+	</main>
+	<footer>
+
+	</footer>
+
+	<script type="text/javascript" src="main.js"></script>
+</body>
+</html>

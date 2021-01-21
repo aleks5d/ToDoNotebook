@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> authorization </title>
+	<link rel="stylesheet" href="authorizationStyles.css">
+	<meta charset="UTF-8" />
+</head>
+<body>
+	<div>
+		Sign in
+		<form action="/signin" method="post" id="signin">
+			<input type="text" name="username" placeholder="login" required pattern="^[a-zA-Z0-9]{1,20}$" title="login must contain only letters and numbers"><br><br>
+			<label>Password</label><br>
+			<input type="password" name="password" placeholder="password" required pattern="^[a-zA-Z0-9]{5,20}$" 
+				title="password must contain only letters and numbers and must be at least 5 characters long"><br><br>
+			<input type="submit" value="Login">
+		</form>
+	</div>
+	<div>
+		Sign up
+		<form action="/signup" method="post" id="signup">
+			<label>login must contain only letters and numbers</label><br>
+			<input type="text" name="username" placeholder="login" required pattern="^[a-zA-Z0-9]{1,20}$"><br><br>
+			<label>password must contain only letters and numbers<br> and must be at least 5 characters long</label><br>
+			<input type="password" name="password" placeholder="password" required pattern="^[a-zA-Z0-9]{5,20}$"><br><br>
+			<input type="submit" value="Register">	
+		</form>
+	</div>	
+
+	<script type="text/javascript" src="auth.js"></script>
+</body>
+</html>
