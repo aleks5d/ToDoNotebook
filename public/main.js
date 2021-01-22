@@ -152,6 +152,11 @@ function logout() {
 	document.location.href = "./authorization.html"
 }
 
+function about() {
+	document.querySelector('.about-box').classList.toggle('show');
+	document.querySelector('.about-background').classList.toggle('show');
+}
+
 async function main() {
 	let append = document.querySelector('.create');
 	append.onclick = addNewNote;
@@ -166,6 +171,15 @@ async function main() {
 	}
 
 	document.querySelector('.logout').onclick = logout;
+	document.querySelector('.about').onclick = about;
+	document.querySelector('.about-title i').onclick = about;
+
 }
 
 main();
+
+window.onclick = function(event) {
+	if (event.target.matches('.about-background')) {
+		about();
+	}
+};

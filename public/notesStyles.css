@@ -30,6 +30,7 @@ header table td {
 }
 
 header table td:last-of-type {
+	width: auto;
 	border-right: none;
 	text-align: right;
 	padding-right: 1%;
@@ -80,6 +81,7 @@ header .show {
 }
 
 main {
+	overflow: scroll;
 	flex-grow: 1;
 }
 
@@ -104,7 +106,7 @@ main {
 
 .note .title {
 	font-weight: 600;
-	height: 10%;
+	height: 12%;
 	overflow: hidden;
 	border-bottom: 1px solid lightgrey;
 	padding: 1vh 1vw;
@@ -124,6 +126,62 @@ main {
 	resize: none;
 	width: 90%;
 	height: 160px;
+}
+
+.about-background {
+	display: none;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.about-background.show {
+	display: block;
+}
+
+.about-box {
+	top: 25%;
+	left: 25%;
+	height: 50%;
+	width: 50%;
+	z-index: 2;
+	display: none;
+	position: fixed;
+	border: 1px solid red;
+	font-size: 30px;
+	padding: 2%;
+	border-radius: 0% 25% 25% 25%;
+	background-color: #B11E4E;
+}
+
+.about-box.show {
+	display: block;
+}
+
+.about-title {
+	font-size: 5vh;
+	height: 20%;
+}
+
+.about-title i {
+	cursor: pointer;
+}
+
+.about-content {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 5%;
+}
+
+.about-content a {
+	color: black;
+	text-decoration: none;
+}
+
+.about-content a:visited {
+	color: black;
+	text-decoration: none;
 }
 
 footer {
