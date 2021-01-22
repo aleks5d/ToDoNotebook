@@ -1,21 +1,11 @@
 class Cookie {
 	parse(raw) {
-		let arr = raw.split(';');
+		let arr = raw.split('; ');
 		this.cookies = {};
-		this.names = []
 		for (let i = 0; i < arr.length; i++) {
 			let [key, value] = arr[i].split('=');
 			this.cookies[key] = value;
-			this.names.push(key);
 		}
-	}
-
-	set() {
-		let cookie = ""
-		for (let i of this.names) {
-			cookie += this.cookies[i].key + '=' + this.cookies[i].value + ';'
-		}
-		this.document.cookie = cookie;
 	}
 
 	constructor(document) {
@@ -23,39 +13,24 @@ class Cookie {
 		this.parse(document.cookie);
 	}
 
-	setValue(key, value) {
-		if (!this.cookies[key]) {
-			this.names.push(key);
-		}
-		this[key] = value;
+	setValue(key, value, params = "") {
+		this.cookies[key] = value;
+		this.document.cookie = key + "=" + value + ";" + params;
 	}
 
-	clearValue(key) {
-		for (let i = 0; i < this.names.length; ++i) {
-			if (this.names[i] == key) {
-				this.names[i] = this.names[this.names.length - 1];
-				this.names.pop();
-				break;
-			}
-		}
-		if (this.cookies[key]) {
-			delete(this.cookies.key);
-		}
-	}
-
-
-
-	clear() {
-		for (let i = 0; i < this.names.length; ++i) {
-			delete(this.cookies[this.names[i]]);
-		}
-		while (this.names.length > 0) {
-			this.names.pop();
-		}
+	deleteValue(key) {
+		console.log('hmmm');
+		this.setValue(key, "0", "max-age=-1");
 	}
 }
 
-let cookiesWorker = new Cookie(document);
+const errorsText = {
+	'er': 'Произошла непредвиденная ошибка! попробуйте позже',
+	'wp': 'Неверный логин или пароль.',
+	'ue': 'Пользователь с таким логином уже сущесвтует.'
+};
+
+let cookiesWorker;
 
 function checkForm(form) {
 	let login = form.querySelector('.login').value;
@@ -69,7 +44,17 @@ function checkForm(form) {
 
 
 function main() {
-	
+	cookiesWorker = new Cookie(document);
+	console.log(cookiesWorker.cookies);
+	if (cookiesWorker.cookies.authRes && cookiesWorker.cookies.authMethod && errorsText[cookiesWorker.cookies.authRes]) {
+		if (cookiesWorker.cookies.authMethod == 'in') {
+			document.querySelector('.signin .error').innerText = errorsText[cookiesWorker.cookies.authRes];
+		} else if (cookiesWorker.cookies.authMethod == 'up') {
+			document.querySelector('.signup .error').innerText = errorsText[cookiesWorker.cookies.authRes];
+		}
+		cookiesWorker.deleteValue("authRes");
+		cookiesWorker.deleteValue("authMethod");
+	}
 	console.log('upload');
 }
 

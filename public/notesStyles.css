@@ -13,26 +13,33 @@ body {
 }
 
 header {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
 	border-bottom: 1px solid lightgrey;
 	height: 4%;
 	font-size: 4vh;
 	padding: 1% 2%;
 }
 
-header div:first-of-type {
-	flex-grow: 12;
-	text-align: left;
+header table {
+	width: 100%;
+	height: 100%;
 }
-header div {
-	flex-grow: 1;
+
+header table td {
+	width: 20%;
 	text-align: right;
 }
 
-header .fi:hover {
+header table td:first-of-type {
+	width: 40%;
+	text-align: left;
+}
+
+header i:hover {
 	cursor: pointer;
+}
+
+header i {
+	font-style: normal;
 }
 
 main {
