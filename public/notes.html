@@ -26,18 +26,24 @@
 		<table>
 			<tr>
 				<td> <! Иконка Notes5d >
-					<i class="fi fi-swarm" title="Главная страница"></i>
+					<i>ToDoNotebook</i>
 				</td>
-				<td> <! обновить >
+				<td class = 'refresh btn'> <! обновить >
 					<i class="fi fi-cloud-refresh" title="Обновить"></i>
 				</td>
 
-				<td> <! настройки >
+				<td class = 'settings btn btn-drop'> <! настройки >
 					<i class="fi fi-player-settings" title="Настройки"></i>
+					<div class = "dropdown-content">
+						<a href = '#' class = 'about'>О нас</a>
+					</div>
 				</td>
 				
-				<td class = 'account'> <! аккаунт >
-					<i> </i>
+				<td class = 'account btn btn-drop'> <! аккаунт >
+					<i class = 'login'> </i>
+					<div class = "dropdown-content">
+						<a href = '#' class = 'logout'> Выйти </a>
+					</div>
 				</td>
 			</tr>
 		</table>
@@ -50,7 +56,7 @@
 					<input type="text"> </div>
 				<div class = "content"> 
 					Текст заметки: <br>
-				 	<textarea class = "area"> </textarea>
+				 	<textarea class = "area"></textarea>
 				 </div>
 			 	<button class = "create"> Создать </button>
 			</div>

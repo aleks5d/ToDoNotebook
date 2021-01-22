@@ -113,10 +113,14 @@ async function addNewNote() {
 		});
 }
 
-async function main() {
-	let append = document.querySelector('.create');
-	append.onclick = addNewNote;
+function clearNotes() {
+	let arr = document.querySelectorAll('.note');
+	for (let i = 1; i < arr.length; ++i) {
+		arr[i].remove();
+	}
+}
 
+async function uploadNotes() {
 	await fetch('/notes', {
 		method: 'POST',
 		headers: {'Content-Type': 'application/json;charset=utf-8'},
@@ -135,6 +139,33 @@ async function main() {
 				}
 			}
 		});
+}
+
+function dropContent() {
+	let x = this.querySelector('.dropdown-content');
+	if (!x) return;
+	x.classList.toggle('show');
+}
+
+function logout() {
+	cookieWorker.deleteValue('jwt');
+	document.location.href = "./authorization.html"
+}
+
+async function main() {
+	let append = document.querySelector('.create');
+	append.onclick = addNewNote;
+	let refresh = document.querySelector('.refresh');
+	refresh.onclick = () => {clearNotes(); uploadNotes();};
+
+	uploadNotes();
+
+	let arr = document.querySelectorAll('.btn-drop');
+	for (let i = 0; i < arr.length; ++i) {
+		arr[i].onclick = dropContent;
+	}
+
+	document.querySelector('.logout').onclick = logout;
 }
 
 main();
