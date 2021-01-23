@@ -77,7 +77,6 @@ async function addNote(titleText, contentText, id) {
 }
 
 async function addNewNote() {
-	document.querySelector('.templateNote').style.border = "1px solid lightgrey";
 	let template = document.querySelector('.templateNote');
 	
 	let titleText = template.querySelector('.title > input').value;
@@ -89,6 +88,8 @@ async function addNewNote() {
 	if (!titleText || !contentText) {
 		return;
 	}
+
+	this.disabled = true;
 
 	data = {title: titleText, content: contentText};
 
@@ -110,6 +111,7 @@ async function addNewNote() {
 				template.querySelector('.content > textarea').value = "";
 				addNote(titleText, contentText, res.id);
 			}
+			this.disabled = false;
 		});
 }
 
