@@ -96,7 +96,8 @@ app.post('/signup', urlencodedParser, (req, res) => {
 				login: req.body.login, 
 				passwordHash: hash,
 				count: 1,
-				idMax: 0
+				idMax: 0,
+				maxCount: 10
 			});
 			req.app.locals.notes.insertOne({
 				login: req.body.login, 
@@ -147,7 +148,7 @@ app.post('/newNote', jsonencodedParser, (req, res) => {
 			if (err || !user) {
 				return res.send({status: 'er'});
 			}
-			if (user.count == Info.MaxCount) {
+			if (user.count >= user.maxCount) {
 				return res.send({status: 'ne'});
 			}
 			req.app.locals.users.findOneAndUpdate({login: user.login}, {$set: {count: user.count+1, idMax: user.idMax + 1}});
